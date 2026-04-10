@@ -4,12 +4,163 @@
     box-sizing: border-box;
 }
 
+@font-face{
+    font-family: "Clash";
+    src: url(fonts/ClashDisplay-Bold.ttf);
+    font-weight: 700;
+}
+font-face{
+    font-family: "Clash";
+    src: url(fonts/ClashDisplay-Medium.ttf);
+    font-weight: 500;
+}
+font-face{
+    font-family: "Clash";
+    src: url(fonts/ClashDisplay-Regular.ttf);
+    font-weight: 400;
+}
+
 body{
-    background-color: rgb(246, 6, 6);
+    background-color: black;
+    color: white;
+    font-family: "inter", sans-serif;
+}
+
+h1,
+h2{
+    font-family: "Clash" sans-serif;
+}
+
+a{
+    text-decoration: none;
+    font-size: 16px;
+    color: white;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 8px 8px 8px 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    border-radius: 40px;
+    color: rgba(0, 0, 0, 0.9);
+}
+
+.botoes{
+    display: flex;
+    gap: 32px;
+}
+
+.botaoSecundario{
+    background-color: black;
+    color: rgba(255, 255, 255, 0.882);
+    border: 2px solid rgba(255, 255, 255, 0.151);
 }
 
 header{
     display: flex;
+    width: 100%;
     justify-content: space-between;
     padding: 32px 4vw;
+    position: absolute;
+    z-index: 99;
+
+    h1{
+        font-size: 24px;
+        font-weight: 400;
+    }
 }
+
+.hero{
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .bg{
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+    }
+
+    .subtitulo{
+        position: relative;
+        width: 350px;
+        height: 56px;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 40px; 
+        margin-bottom: 72px;
+
+        video{
+            position: absolute;
+            width: 100%;
+            top: 0;
+            z-index: -1;
+        }
+
+        h3{
+            font-size: 16px;
+            z-index: 2;
+            font-weight: 400;
+            mix-blend-mode: color-dodge;
+            color: rgb(216, 216, 216);
+        }
+    }
+    .conteudo{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 0 13vw;
+
+    h2{
+        font-size: 3.5vw;
+        text-align: center;
+        font-weight: 400;
+    }
+
+    p{
+        text-align: center;
+        width: 70%;
+        font-size: clamp(16px, 1.1vw, 1.1vw);
+        line-height: clamp(24px, 1.8vw, 1.8vw);
+        margin-top: 24px;
+        margin-bottom: 40px;
+    }
+}
+
+}
+
+.subtitulo:after{
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.208);
+    position: absolute;
+    z-index: 1;
+
+}
+
+.secao2{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4vw;
+
+    h2{
+        font-size: 5vw;
+        font-family: "inter" sans-serif;
+        font-weight: 400;
+        color: rgba(255, 255, 255, 0.75)
+    }
+}
+
+
