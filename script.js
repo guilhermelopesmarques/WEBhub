@@ -59,6 +59,40 @@ window.addEventListener("load", () => {
         duration: 1
     })
 
+    //animações dos textos surgindo do secao4
+
+    const linhaDoTempo2 = gsap.timeline({
+         scrollTrigger: {
+            trigger: ".secao4",
+            scrub: 2,
+            end: "+=3000",
+            pin: true,
+        },
+    });
+
+    const textosSecao4 = document.querySelectorAll(".secao4 h2");
+
+    textosSecao4.forEach((texto) => {
+        const split2 = new SplitText(texto,{
+            types: "chars"
+        });
+        linhaDoTempo2.from(split2.chars, {
+            opacity: 0,
+            filter: "blur(20px)",
+            stagger: {
+                each: .2,
+                from: "random"
+            }
+        });
+
+        linhaDoTempo2.to(split2.chars, {
+            opacity: 0,
+            stagger: {
+                each: .2,
+                from: "random"
+            }
+        }, "+=2");
+    });
 });
 
 

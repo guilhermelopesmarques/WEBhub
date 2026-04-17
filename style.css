@@ -254,11 +254,6 @@ header{
         font-size: 9vw;
         position: absolute;
         color: rgba(255, 255, 255, 0.75);
-        opacity: 0;
-    }
-
-    .primeiroH2{
-        opacity: 1;
     }
 }
 
