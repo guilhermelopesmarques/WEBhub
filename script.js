@@ -1,10 +1,12 @@
+import * as THREE from 'three';
+gsap.registerPlugin(ScrollTrigger,ScrollSmoother,SplitText);
+
 // objetos console
 // metodos
 
 // eventos
 
 window.addEventListener("load", () => {
-    gsap.registerPlugin(ScrollTrigger,ScrollSmoother,SplitText);
 
     const videohero = document.querySelector(".hero video");   
     const videoFooter = document.querySelector("footer video"); 
@@ -93,6 +95,29 @@ window.addEventListener("load", () => {
             }
         }, "+=2");
     });
+
+    // começando o codigo THREE JS = 3D
+
+    // CENA
+    const cena = new THREE.Scene();
+
+    // CAMERA
+    const camera = new THREE.PerspectiveCamera(
+        40,
+        window.innerWidht/window.innerHeight,
+        0.1,
+        1000
+    )
+
+    camera.position.z = 4;
+
+    // RENDERIZADOR
+    const renderizador = new THREE.WebGLRenderer();
+    renderizador.setSize(window.innerWidht/window.innerHeight);
+
+    const divDiamante = document.querySelector(".divDiamante");
+    divDiamante.appendChild(renderizador.domElement)
+
 });
 
 
