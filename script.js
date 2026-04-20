@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 gsap.registerPlugin(ScrollTrigger,ScrollSmoother,SplitText);
 
 // objetos console
@@ -114,10 +115,31 @@ window.addEventListener("load", () => {
     // RENDERIZADOR
     const renderizador = new THREE.WebGLRenderer();
     renderizador.setSize(window.innerWidht/window.innerHeight);
-
     const divDiamante = document.querySelector(".divDiamante");
     divDiamante.appendChild(renderizador.domElement)
 
+    // Inserir modelo 3D
+    const gltfLoader = new GLTFLoader();
+    gltfLoader.load("img/diamond-compressed.glb", (objeto)=>{
+        const diamante = objeto.scene;
+
+        cena.add(diamante);
+    });
+
+    // inserir textura
+    const txtLoader = new THREE.TextureLoader();
+    txtLoader.load("img/hdri.webp", (texturaCarregada)=>{
+        texturaCarregada.mapping = THREE.EquirectangularReflectionMapping;
+    })
+
+    // 60hz ou 140hz
+
+    function animar(){
+        renderizador.render(cena, camera);
+        requestAnimationFrame(animar);
+    }
+
+    animar()
 });
 
 
