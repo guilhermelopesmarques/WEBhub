@@ -105,7 +105,7 @@ window.addEventListener("load", () => {
     // CAMERA
     const camera = new THREE.PerspectiveCamera(
         40,
-        window.innerWidht/window.innerHeight,
+        window.innerWidth/window.innerHeight,
         0.1,
         1000
     )
@@ -113,8 +113,8 @@ window.addEventListener("load", () => {
     camera.position.z = 4;
 
     // RENDERIZADOR
-    const renderizador = new THREE.WebGLRenderer();
-    renderizador.setSize(window.innerWidht/window.innerHeight);
+    const renderizador = new THREE.WebGLRenderer({alpha: true, antialias: true});
+    renderizador.setSize(window.innerWidth, window.innerHeight);
     const divDiamante = document.querySelector(".divDiamante");
     divDiamante.appendChild(renderizador.domElement)
 
@@ -122,7 +122,7 @@ window.addEventListener("load", () => {
     const gltfLoader = new GLTFLoader();
     gltfLoader.load("img/diamond-compressed.glb", (objeto)=>{
         const diamante = objeto.scene;
-
+        diamante.position.z = -4;
         cena.add(diamante);
     });
 
@@ -130,7 +130,10 @@ window.addEventListener("load", () => {
     const txtLoader = new THREE.TextureLoader();
     txtLoader.load("img/hdri.webp", (texturaCarregada)=>{
         texturaCarregada.mapping = THREE.EquirectangularReflectionMapping;
-    })
+        const pmrem = new THREE.PMREMGenerator(renderizador);
+        const ambiente = pmrem.fromEquirectangular(texturaCarregada).texture;
+        cena.environment = ambiente;
+    });
 
     // 60hz ou 140hz
 

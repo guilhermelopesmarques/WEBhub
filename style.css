@@ -250,6 +250,10 @@ header{
     align-items: center;
     justify-content: center;
 
+    .divDiamante{
+        z-index: 2;
+    }
+
     h2{
         font-size: 9vw;
         position: absolute;
