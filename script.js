@@ -66,7 +66,7 @@ window.addEventListener("load", () => {
 
     const linhaDoTempo2 = gsap.timeline({
          scrollTrigger: {
-            trigger: ".secao4",
+            trigger: ".transicao2",
             scrub: 2,
             end: "+=3000",
             pin: true,
@@ -119,10 +119,31 @@ window.addEventListener("load", () => {
     divDiamante.appendChild(renderizador.domElement)
 
     // Inserir modelo 3D
+    let diamante = null;
     const gltfLoader = new GLTFLoader();
     gltfLoader.load("img/diamond-compressed.glb", (objeto)=>{
-        const diamante = objeto.scene;
-        diamante.position.z = -4;
+        diamante = objeto.scene;
+        diamante.position.z = -8;
+        diamante.position.y = 2;
+
+        const linhaDoTempo3 = gsap.timeline({
+            scrollTrigger: {
+            trigger: ".transicao2",
+            scrub: 2,
+            end: "+=3000",
+        },
+    });
+
+        linhaDoTempo3.to(diamante.position, {
+            y: 0,
+        });
+        linhaDoTempo3.to(diamante.rotation, {
+            x: 4.6,
+        }, "<");
+        linhaDoTempo3.to(diamante.position, {
+            z:3.3
+        })
+
         cena.add(diamante);
     });
 
@@ -138,6 +159,11 @@ window.addEventListener("load", () => {
     // 60hz ou 140hz
 
     function animar(){
+
+        if(diamante !== null){
+            diamante.rotation.y = diamante.rotation.y + .01;
+        }
+
         renderizador.render(cena, camera);
         requestAnimationFrame(animar);
     }
