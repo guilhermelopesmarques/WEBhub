@@ -270,6 +270,8 @@ header{
 
 footer{
     position: absolute;
+    z-index: 2;
+    opacity: 0;
     top: 0;
     left: 0;
     height: 100%;
@@ -312,6 +314,28 @@ footer{
             color: rgba(255, 255, 255, 0.882);
         }
     }
+}
+
+@media (max-width: 767px){
+    .hero{
+        .conteudo{
+            padding: 5vw;
+        
+        h2{
+            font-size: 6vw;
+        }
+        
+        p{
+            width: 100%;
+        }
+    }
+    }
+}
+@media (max-width: 600px){
+    .botoes{
+        flex-direction: column;
+    }
+
 }
 
 

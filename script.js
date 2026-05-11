@@ -125,24 +125,32 @@ window.addEventListener("load", () => {
         diamante = objeto.scene;
         diamante.position.z = -8;
         diamante.position.y = 2;
+        
 
         const linhaDoTempo3 = gsap.timeline({
             scrollTrigger: {
             trigger: ".transicao2",
             scrub: 2,
-            end: "+=3000",
+            end: "+=3750",
         },
     });
 
         linhaDoTempo3.to(diamante.position, {
             y: 0,
+            duration: 2
         });
         linhaDoTempo3.to(diamante.rotation, {
             x: 4.6,
+            duration: 2
         }, "<");
         linhaDoTempo3.to(diamante.position, {
-            z:3.3
-        })
+            z:3.3,
+            duration: .3
+        });
+        linhaDoTempo3.to("footer", {
+            opacity: 1,
+            duration: .3
+        });
 
         cena.add(diamante);
     });
